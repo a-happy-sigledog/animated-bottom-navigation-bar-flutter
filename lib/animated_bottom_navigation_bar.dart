@@ -339,7 +339,7 @@ class _AnimatedBottomNavigationBarState
           if (_bubbleRadius == widget.splashRadius) {
             _bubbleRadius = 0;
           }
-          double _size = bubbleCurve.value/scaleSize
+          double _size = bubbleCurve.value/scaleSize;
           if (bubbleCurve.value < 0.5) {
             _iconScale = 1 +_size;
           } else {
