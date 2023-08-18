@@ -25,6 +25,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
 
   /// Total item count.
   final int? itemCount;
+  final double scaleSize;
 
   /// Icon data to render in the tab bar.
   final List<IconData>? icons;
@@ -123,6 +124,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.onTap,
     this.tabBuilder,
     this.itemCount,
+    this.scaleSize = 1,
     this.icons,
     this.height,
     this.splashRadius = _defaultSplashRadius,
@@ -239,6 +241,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     double? splashRadius,
     int? splashSpeedInMilliseconds,
     double? notchMargin,
+    double scaleSize,
     Color? backgroundColor,
     Color? splashColor,
     Animation<double>? notchAndCornersAnimation,
@@ -266,6 +269,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
           splashRadius: splashRadius ?? _defaultSplashRadius,
           splashSpeedInMilliseconds: splashSpeedInMilliseconds,
           notchMargin: notchMargin,
+          scaleSize: scaleSize??1,
           backgroundColor: backgroundColor,
           splashColor: splashColor,
           notchAndCornersAnimation: notchAndCornersAnimation,
@@ -333,11 +337,11 @@ class _AnimatedBottomNavigationBarState
           if (_bubbleRadius == widget.splashRadius) {
             _bubbleRadius = 0;
           }
-
+          double _size = bubbleCurve.value/scaleSize
           if (bubbleCurve.value < 0.5) {
-            _iconScale = 1 + bubbleCurve.value;
+            _iconScale = 1 +_size;
           } else {
-            _iconScale = 2 - bubbleCurve.value;
+            _iconScale = (1+_size) - _size;
           }
         });
       });
