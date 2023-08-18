@@ -124,7 +124,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     required this.onTap,
     this.tabBuilder,
     this.itemCount,
-    this.scaleSize,
+    this.scaleSize =1,
     this.icons,
     this.height,
     this.splashRadius = _defaultSplashRadius,
@@ -179,7 +179,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     double? height,
     double? splashRadius,
     int? splashSpeedInMilliseconds,
-    int scaleSize,
+    double scaleSize = 1,
     double? notchMargin,
     Color? backgroundColor,
     Color? splashColor,
@@ -207,7 +207,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
           activeIndex: activeIndex,
           onTap: onTap,
           height: height,
-          scaleSize:scaleSize??1,
+          scaleSize:scaleSize,
           splashRadius: splashRadius ?? _defaultSplashRadius,
           splashSpeedInMilliseconds: splashSpeedInMilliseconds,
           notchMargin: notchMargin,
@@ -243,7 +243,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
     double? splashRadius,
     int? splashSpeedInMilliseconds,
     double? notchMargin,
-    double scaleSize,
+    double scaleSize =1,
     Color? backgroundColor,
     Color? splashColor,
     Animation<double>? notchAndCornersAnimation,
@@ -271,7 +271,7 @@ class AnimatedBottomNavigationBar extends StatefulWidget {
           splashRadius: splashRadius ?? _defaultSplashRadius,
           splashSpeedInMilliseconds: splashSpeedInMilliseconds,
           notchMargin: notchMargin,
-          scaleSize: scaleSize??1,
+          scaleSize: scaleSize,
           backgroundColor: backgroundColor,
           splashColor: splashColor,
           notchAndCornersAnimation: notchAndCornersAnimation,
@@ -339,7 +339,7 @@ class _AnimatedBottomNavigationBarState
           if (_bubbleRadius == widget.splashRadius) {
             _bubbleRadius = 0;
           }
-          double _size = bubbleCurve.value/scaleSize;
+          double _size = bubbleCurve.value/widget.scaleSize;
           if (bubbleCurve.value < 0.5) {
             _iconScale = 1 +_size;
           } else {
